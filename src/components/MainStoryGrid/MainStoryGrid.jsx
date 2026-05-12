@@ -1,17 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {
-  MAIN_STORY,
-  OPINION_STORIES,
-  SECONDARY_STORIES,
-} from '../../data';
+import { MAIN_STORY, OPINION_STORIES, SECONDARY_STORIES } from '../../data';
 
 import SectionTitle from '../SectionTitle';
 import MainStory from '../MainStory';
 import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
+import { COLORS, QUERIES } from '../../constants';
 
 const MainStoryGrid = () => {
   return (
@@ -21,20 +18,20 @@ const MainStoryGrid = () => {
       </MainStorySection>
 
       <SecondaryStorySection>
-        <StoryList>
+        <SecondaryStoryList>
           {SECONDARY_STORIES.map((story, index) => (
             <SecondaryStory key={story.id} {...story} />
           ))}
-        </StoryList>
+        </SecondaryStoryList>
       </SecondaryStorySection>
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
             <OpinionStory key={story.id} {...story} />
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -66,6 +63,34 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const SecondaryStoryList = styled(StoryList)`
+  & > *:not(:last-of-type) {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid ${COLORS.gray[300]};
+  }
+`;
+
+const OpinionStoryList = styled(StoryList)`
+  & > *:not(:last-of-type) {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid ${COLORS.gray[300]};
+  }
+
+  @media (${QUERIES.tabletOnly}) {
+    flex-direction: row;
+    justify-content: space-between;
+
+    & > *:not(:last-of-type) {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+      margin-right: 16px;
+    }
+  }
 `;
 
 const OpinionSection = styled.section`

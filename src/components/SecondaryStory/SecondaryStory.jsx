@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { COLORS } from '../../constants';
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
@@ -43,8 +44,13 @@ const Heading = styled.h2`
 
 const Abstract = styled.p`
   grid-area: abstract;
+  align-self: start;
   font-size: 1rem;
   white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 `;
 
 export default SecondaryStory;
