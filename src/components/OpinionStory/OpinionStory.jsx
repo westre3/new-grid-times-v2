@@ -23,7 +23,7 @@ const Wrapper = styled.article`
   justify-content: space-between;
 
   @media (${QUERIES.tabletOnly}) {
-    max-width: 160px;
+    max-width: 10rem;
     flex-direction: column;
   }
 `;

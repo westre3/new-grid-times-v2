@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from '../../constants';
+import { COLORS, QUERIES } from '../../constants';
 
 const SecondaryStory = ({ id, title, image, location, abstract }) => {
   return (
@@ -16,12 +16,20 @@ const SecondaryStory = ({ id, title, image, location, abstract }) => {
 
 const Wrapper = styled.article`
   display: grid;
+  gap: 4px 16px;
+  color: var(--color-gray-900);
+  grid-template-columns: 120px 1fr;
   grid-template-areas:
     'image heading'
     'image abstract';
-  gap: 4px 16px;
-  grid-template-columns: 120px 1fr;
-  color: var(--color-gray-900);
+
+  @media ${QUERIES.tabletOnly} {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'image'
+      'heading'
+      'abstract';
+  }
 `;
 
 const Image = styled.img`
